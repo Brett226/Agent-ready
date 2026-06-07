@@ -117,7 +117,7 @@ Generate a JSON response with exactly this structure (no markdown, pure JSON):
   const text = data.content[0].text.trim();
 
   // Strip any markdown fences if present
-  const jsonText = text.replace(/^```json\n?/, '').replace(/\n?```$/, '').trim();
+  const json\Text = text.replace(/^```json\n?/g, '').replace(/\n?```$/g, '').replace(/^[^{}*/,'').replace(/[^}]*$/,'').trim();
 
   try {
     return JSON.parse(jsonText);
