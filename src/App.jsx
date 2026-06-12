@@ -249,7 +249,7 @@ export default function App() {
             <Cpu size={14} color="#000" strokeWidth={2.5} />
           </div>
           <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: '-0.02em' }}>
-            Agent<span style={{ color: 'var(--accent)' }}>Ready</span>
+            Fit For<span style={{ color: 'var(--accent)' }}> Agents</span>
           </span>
         </div>
         <div style={{
