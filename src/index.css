@@ -22,8 +22,7 @@
   --font-mono: 'DM Mono', monospace;
   --radius: 4px;
   --radius-lg: 8px;
-}
-
+}overflow-x: hidden;
 html, body {
   background: var(--bg);
   color: var(--text-primary);
