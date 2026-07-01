@@ -1,0 +1,14 @@
+# AI Agent Access
+User-agent: *
+Allow: /api/
+Allow: /agents/
+Allow: /.well-known/
+Disallow: /admin/
+Disallow: /private/
+
+# MCP Server Discovery
+User-agent: Claude
+Allow: /
+
+User-agent: GPT
+Allow: /
