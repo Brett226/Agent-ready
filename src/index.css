@@ -24,7 +24,7 @@
   --radius-lg: 8px;
 }overflow-x: hidden;
 html, body {
-  background: #0a0a0a; 
+background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-display);
   min-height: 100vh;
