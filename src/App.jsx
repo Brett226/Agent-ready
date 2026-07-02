@@ -278,6 +278,8 @@ export default function App() {
             </div>
             <h1 style={{
               fontSize: 'clamp(32px, 5vw, 56px)',
+            lineHeight: '1.2',
+            paddingBottom: '8px,
               fontWeight: 800, lineHeight: 1.05,
               letterSpacing: '-0.03em', marginBottom: 20
             }}>
