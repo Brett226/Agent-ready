@@ -277,7 +277,7 @@ export default function App() {
               lineHeight: 1.2,
               letterSpacing: '-0.03em',
               marginBottom: 20,
-              paddingBottom: 16
+              paddingBottom: 32
             }}>
               Make your website<br />
               <span style={{
