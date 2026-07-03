@@ -287,7 +287,7 @@ export default function App() {
               display: 'block',
               paddingBottom: 12            
               }}>
-                readable by AI agents
+                visible to AI agents
               </span>
             </h1>
             <p style={{
