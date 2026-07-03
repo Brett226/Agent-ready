@@ -274,10 +274,10 @@ export default function App() {
             <h1 style={{
               fontSize: 'clamp(32px, 5vw, 56px)',
               fontWeight: 800,
-              lineHeight: 1.2,
+              lineHeight: 1.4,
               letterSpacing: '-0.03em',
               marginBottom: 20,
-              paddingBottom: 32
+              paddingBottom: 0
             }}>
               Make your website<br />
               <span style={{
