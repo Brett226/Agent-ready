@@ -281,8 +281,11 @@ export default function App() {
             }}>
               Make your website<br />
               <span style={{
-                background: 'linear-gradient(135deg, var(--accent), #00ccff)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
+              background: 'linear-gradient(135deg, var(--accent), #00ccff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              display: 'block',
+              paddingBottom: 12            
               }}>
                 readable by AI agents
               </span>
