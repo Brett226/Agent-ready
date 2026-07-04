@@ -284,9 +284,9 @@ export default function App() {
               background: 'linear-gradient(135deg, var(--accent), #00ccff)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              display: 'block',
-              paddingBottom: 12            
-              }}>
+              display: 'block',  
+              lineHeight: '1.5',           
+              paddingBottom: 12   }}>
                 visible to AI agents
               </span>
             </h1>
