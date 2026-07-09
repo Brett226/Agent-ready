@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowRight, Copy, Check, Download, AlertCircle, Zap, Globe, Shield, Cpu, FileCode, BarChart3, ChevronDown, ChevronUp } from 'lucide-react'
+import { ArrowRight, Copy, Check, Download, AlertCircle, Zap, Globe, Shield, Cpu, FileCode, BarChart3, ChevronDown, ChevronUp, Mail } from 'lucide-react'
 
 const TABS = [
   { id: 'agentsPage', label: '/agents Page', icon: Globe, description: 'Human-readable page for AI agents' },
@@ -227,6 +227,12 @@ export default function App() {
     })
   }
 
+  const handleContact = (score, grade, siteUrl) => {
+    const subject = encodeURIComponent(`AI Visibility Fix Request — ${siteUrl}`)
+    const body = encodeURIComponent(`Hi Brett,\n\nI just ran ${siteUrl} through Fit For Agents and scored ${score}/100 (Grade: ${grade}).\n\nI'd like to get my site agent-ready. Can you help?\n\nThanks`)
+    window.location.href = `mailto:brett@fitforagents.ai?subject=${subject}&body=${body}`
+  }
+
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
@@ -274,19 +280,19 @@ export default function App() {
             <h1 style={{
               fontSize: 'clamp(32px, 5vw, 52px)',
               fontWeight: 800,
-              lineHeight: 1.4,
+              lineHeight: 1.2,
               letterSpacing: '-0.03em',
               marginBottom: 20,
-              paddingBottom: 0
+              paddingBottom: 8
             }}>
               Make your website<br />
               <span style={{
-              background: 'linear-gradient(135deg, var(--accent), #00ccff)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              display: 'block',  
-              lineHeight: '1.5',           
-              paddingBottom: 12   }}>
+                background: 'linear-gradient(135deg, var(--accent), #00ccff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                display: 'block',
+                paddingBottom: 12
+              }}>
                 visible to AI agents
               </span>
             </h1>
@@ -402,20 +408,43 @@ export default function App() {
                 color="var(--accent)"
               />
             </div>
-            <button
-              onClick={handleDownloadAll}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                background: 'var(--accent)', color: '#000',
-                border: 'none', padding: '10px 20px',
-                borderRadius: 'var(--radius)', cursor: 'pointer',
-                fontSize: 12, fontWeight: 700, fontFamily: 'var(--font-display)',
-                letterSpacing: '0.05em', whiteSpace: 'nowrap', alignSelf: 'flex-start'
-              }}
-            >
-              <Download size={13} />
-              DOWNLOAD ALL
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignSelf: 'flex-start' }}>
+              <button
+                onClick={handleDownloadAll}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  background: 'var(--accent)', color: '#000',
+                  border: 'none', padding: '10px 20px',
+                  borderRadius: 'var(--radius)', cursor: 'pointer',
+                  fontSize: 12, fontWeight: 700, fontFamily: 'var(--font-display)',
+                  letterSpacing: '0.05em', whiteSpace: 'nowrap'
+                }}
+              >
+                <Download size={13} />
+                DOWNLOAD ALL
+              </button>
+              <button
+                onClick={() => handleContact(
+                  result.readabilityScore?.score || 0,
+                  result.readabilityScore?.grade || 'F',
+                  url
+                )}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  background: 'transparent', color: 'var(--accent)',
+                  border: '1px solid var(--accent)', padding: '10px 20px',
+                  borderRadius: 'var(--radius)', cursor: 'pointer',
+                  fontSize: 12, fontWeight: 700, fontFamily: 'var(--font-display)',
+                  letterSpacing: '0.05em', whiteSpace: 'nowrap',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#000' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
+              >
+                <Mail size={13} />
+                GET MY SITE FIXED
+              </button>
+            </div>
           </div>
 
           <div style={{
@@ -497,6 +526,41 @@ export default function App() {
               <InstallInstructions tab={activeTab} domain={result?.businessName} />
             </div>
           </div>
+
+          <div style={{
+            marginTop: 24, padding: 24,
+            background: 'var(--accent-dim)', border: '1px solid var(--accent-mid)',
+            borderRadius: 'var(--radius-lg)', textAlign: 'center'
+          }}>
+            <p style={{ fontSize: 14, color: 'var(--text-primary)', marginBottom: 16, fontWeight: 600 }}>
+              Want us to install everything for you?
+            </p>
+            <p style={{ fontSize: 12, color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)', marginBottom: 20 }}>
+              We'll take your site from its current score to 85+ in about an hour. Free for the first 5 businesses.
+            </p>
+            <button
+              onClick={() => handleContact(
+                result.readabilityScore?.score || 0,
+                result.readabilityScore?.grade || 'F',
+                url
+              )}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: 'var(--accent)', color: '#000',
+                border: 'none', padding: '12px 28px',
+                borderRadius: 'var(--radius)', cursor: 'pointer',
+                fontSize: 13, fontWeight: 800, fontFamily: 'var(--font-display)',
+                letterSpacing: '0.06em'
+              }}
+            >
+              <Mail size={14} />
+              GET MY SITE FIXED — IT'S FREE
+            </button>
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', marginTop: 12 }}>
+              brett@fitforagents.ai · Bakersfield, CA
+            </p>
+          </div>
+
         </section>
       )}
 
